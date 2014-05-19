@@ -32,11 +32,11 @@ public final class R {
         public static final int editText3=0x7f080004;
         public static final int imageButton1=0x7f080006;
         public static final int listView1=0x7f080000;
-        public static final int listView2=0x7f080009;
+        public static final int listView2=0x7f080008;
         public static final int message=0x7f08000d;
         public static final int name=0x7f080003;
         public static final int newmsgbtn=0x7f080001;
-        public static final int person=0x7f080008;
+        public static final int person=0x7f080009;
         public static final int person_name=0x7f08000b;
         public static final int personal_info=0x7f080010;
         public static final int phonenumber=0x7f08000e;

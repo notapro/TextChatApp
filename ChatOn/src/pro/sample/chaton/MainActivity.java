@@ -1,11 +1,16 @@
 package pro.sample.chaton;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -15,6 +20,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	File sdcard, file;
 	EditText name, phone, status;
 	Editor e;
 	Bitmap bmp;
@@ -68,6 +74,18 @@ public class MainActivity extends Activity implements OnClickListener {
 				e.putString("name", name.getText().toString());
 				e.putString("phone", phone.getText().toString());
 				e.putString("status", status.getText().toString());
+				sdcard = Environment.getExternalStorageDirectory();	//path of external directory
+				file = new File( sdcard, "dp.jpeg" );
+
+				FileOutputStream fOut;
+				try {
+					fOut = new FileOutputStream( file );
+					bmp.compress( Bitmap.CompressFormat.JPEG, 90, fOut );	//store dp
+					e.putString("path", sdcard.toString()+"/dp.jpeg");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				e.commit();	//save details in shared preference
 				chatsPage = new Intent(MainActivity.this, ChatPage.class);
 				startActivity(chatsPage);	//start chat intent

@@ -60,8 +60,8 @@ public class Messages extends Activity {
 		if(item.getItemId()==R.id.chat_info)
 		{
 			msg=new Intent(Messages.this, ChatInfo.class);
-			msg.putExtra("contactNum", person);
-			msg.putExtra("contactName", phone);
+			msg.putExtra("contactNum", phone);
+			msg.putExtra("contactName", person);
 			startActivity(msg);
 		}
 		return super.onOptionsItemSelected(item);
